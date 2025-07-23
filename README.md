@@ -4,14 +4,14 @@ Progetto dimostrativo a scopo educativo.
 
 ## Esecuzione dei test
 
-Se non è installato make:
-
-```bash
-python -m unittest discover -s test
-```
-
-Se è installato make:
+Se **make** è installato:
 
 ```bash
 make test
+```
+
+Se **make** non è installato:
+
+```bash
+python -m unittest discover -s test
 ```
