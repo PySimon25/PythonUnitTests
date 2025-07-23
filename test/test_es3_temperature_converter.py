@@ -30,13 +30,15 @@ class TestTemperatureConverter(unittest.TestCase):
         result = self.temperature_converter.celsius_to_fahrenheit(100)
         self.assertEqual(result, 212.0)
 
+        # Recupera la history dal convertitore
         history = self.temperature_converter.get_conversion_history()
         self.assertEqual(len(history), 1)
 
         log = history[0]
 
-        # Verifica timestamp
+        # assertIn verifica che "timestamp" esista nel dizionario log
         self.assertIn("timestamp", log)
+        # Verifica il timestamp
         self.assertTrue(self._is_valid_isoformat(log["timestamp"]))
 
         # Verifica sezione "from"
@@ -52,17 +54,22 @@ class TestTemperatureConverter(unittest.TestCase):
         result = self.temperature_converter.fahrenheit_to_celsius(32)
         self.assertEqual(result, 0.0)
 
+        # Recupera la history dal convertitore
         history = self.temperature_converter.get_conversion_history()
         self.assertEqual(len(history), 1)
 
         log = history[0]
 
+        # assertIn verifica che "timestamp" esista nel dizionario log
         self.assertIn("timestamp", log)
+        # Verifica il timestamp
         self.assertTrue(self._is_valid_isoformat(log["timestamp"]))
 
+        # Verifica sezione "from"
         self.assertEqual(log["from"]["unit"], "Fahrenheit")
         self.assertEqual(log["from"]["value"], 32)
 
+        # Verifica sezione "to"
         self.assertEqual(log["to"]["unit"], "Celsius")
         self.assertEqual(log["to"]["value"], 0.0)
 
