@@ -1,18 +1,49 @@
 class PasswordTooShortError(Exception):
+    """Raised when the password is shorter than the required minimum length."""
     pass
 
 class PasswordMissingUppercaseError(Exception):
+    """Raised when the password does not contain an uppercase letter."""
     pass
 
 class PasswordMissingLowercaseError(Exception):
+    """Raised when the password does not contain a lowercase letter."""
     pass
 
 class PasswordMissingDigitError(Exception):
+    """Raised when the password does not contain a digit."""
     pass
 
 class PasswordValidator:
+    """
+    Validates passwords against a set of security rules.
+
+    Rules:
+        - Minimum length of 8 characters
+        - At least one uppercase letter
+        - At least one lowercase letter
+        - At least one digit
+
+    Raises:
+        PasswordTooShortError: If the password is too short.
+        PasswordMissingUppercaseError: If the password lacks uppercase letters.
+        PasswordMissingLowercaseError: If the password lacks lowercase letters.
+        PasswordMissingDigitError: If the password lacks digits.
+    """
  
     def validate(self, password: str) -> None:
+        """
+        Validates the given password based on defined rules.
+
+        Args:
+            password (str): The password to validate.
+
+        Raises:
+            PasswordTooShortError: If the password has fewer than 8 characters.
+            PasswordMissingUppercaseError: If no uppercase letters are present.
+            PasswordMissingLowercaseError: If no lowercase letters are present.
+            PasswordMissingDigitError: If no digits are present.
+        """
         if not self._is_min_length(password):
             raise PasswordTooShortError("La password deve contenere almeno 8 caratteri.")
         
