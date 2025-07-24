@@ -1,5 +1,17 @@
+class PasswordTooShortError(Exception):
+    pass
+
+class PasswordMissingUppercaseError(Exception):
+    pass
+
+class PasswordMissingLowercaseError(Exception):
+    pass
+
+class PasswordMissingDigitError(Exception):
+    pass
+
 class PasswordValidator:
-    
+ 
     def validate(self, password: str) -> None:
         if not self._is_min_length(password):
             raise PasswordTooShortError("La password deve contenere almeno 8 caratteri.")
@@ -24,16 +36,3 @@ class PasswordValidator:
     
     def _contains_digits(self, password: str) -> bool:
         return any(char.isdigit() for char in password)
-
-
-class PasswordTooShortError(Exception):
-    pass
-
-class PasswordMissingUppercaseError(Exception):
-    pass
-
-class PasswordMissingLowercaseError(Exception):
-    pass
-
-class PasswordMissingDigitError(Exception):
-    pass
